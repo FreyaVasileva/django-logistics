@@ -1,0 +1,51 @@
+.navigation-bar {
+    width: 100%;
+    height: 70px;
+    background-color: rgb(2, 48, 71);
+    position: fixed
+}
+
+.logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.navigation-bar a {
+    font-family: 'Roboto', 'Lato', sans-serif;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    height: 70px;
+    line-height: 70px;
+    color: rgb(5,119,177);
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #05b195;
+    text-decoration: none;
+    font-size: 110%;
+}
+.bg-img {
+    min-height: 800px;
+    min-width: 900px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+	width: 100%;
+	height: 100vh;
+}
+
+.contact-form {
+    position: fixed;
+    right: 0;
+    margin: 80px;
+    width: 500px;
+    padding: 16px;
+    background-color: rgb(5,119,177);
+    border-radius: 10px;
+}
