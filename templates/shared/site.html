@@ -18,8 +18,11 @@
     <a href="{% url 'contact' %}">Contact us</a>
     {% if user.is_authenticated %}
         <a style="float: right;" href="{% url 'signout user' %}">Sign Out</a>
-        <a style="float: right;" href="#">User: {{ user.username }}</a>
-        <a style="float: right;" href="#">Consignments</a>
+        <a style="float: right;" href="{% url 'user profile' %}">User: {{ user.username }}</a>
+        <a style="float: right;" href="{% url 'list consignments' %}">Consignments</a>
+        {% if is_worker %}
+            <a style="float: right;" href="{% url 'add worker' %}">Sign Up Worker</a>
+        {% endif %}
     {% else %}
         <a style="float: right;" href="{% url 'signin user' %}">Sign In</a>
         <a style="float: right;" href="{% url 'signup user' %}">Sign Up</a>
@@ -28,8 +31,10 @@
 
 </nav>
 
-{% block site_content %}
-{% endblock %}
+ <div style="padding-top: 70px">
+    {% block site_content %}
+    {% endblock %}
+ </div>
 
 </body>
 </html>

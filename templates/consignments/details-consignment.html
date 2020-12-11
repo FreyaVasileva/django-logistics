@@ -1,0 +1,20 @@
+{% extends 'shared/site.html' %}
+{% block site_content %}
+    <div class="d-flex">
+        <div class="d-inline p-2 w-50">
+            <h5><u>Tracking number:</u> {{ consignment.tracking_number }}</h5>
+            <h5><u>Delivery date:</u> {{ consignment.delivery_date }}</h5>
+            <h5><u>Receiver:</u> {{ consignment.receiver }}</h5>
+            <h5>{% include 'consignments/status-consignment.html' %}</h5>
+
+            <div class="btn-group">
+                <button class="btn btn-outline-secondary btn-sm"><a href="{% url 'edit consignment' consignment.id %}">Edit</a>
+                </button>
+                <br><br>
+                <button class="btn btn-outline-danger btn-sm"><a href="{% url 'delete consignment' consignment.id %}">Delete</a>
+                </button>
+                <br><br>
+            </div>
+        </div>
+    </div>
+{% endblock %}

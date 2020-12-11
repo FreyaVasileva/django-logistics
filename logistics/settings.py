@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'common',
     'consignment',
-    'accounts',
+    'accounts'
 ]
 
 MIDDLEWARE = [

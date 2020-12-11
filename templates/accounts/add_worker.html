@@ -1,0 +1,21 @@
+{% extends 'shared/site.html' %}
+{% block site_content %}
+    {% load bootstrap4 %}
+    <h1 class="text-center">Add new user</h1>
+    <div class="row d-flex justify-content-center">
+        <form method="POST" action="{% url 'add worker' %}" enctype="multipart/form-data">
+
+            {% for field in user_form %}
+                {% bootstrap_field field %}
+            {% endfor %}
+            {% for field in profile_form %}
+                {% bootstrap_field field %}
+            {% endfor %}
+
+            {% csrf_token %}
+            {% buttons %}
+                <button class="btn btn-primary">Add user</button>
+            {% endbuttons %}
+        </form>
+    </div>
+{% endblock %}

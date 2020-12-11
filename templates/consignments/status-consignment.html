@@ -1,0 +1,7 @@
+{% if consignment.status == 'pending_delivery' %}
+    <p style="color: orange"><strong>Status: Pending delivery</strong></p>
+{% elif consignment.status == 'delivered' %}
+    <p style="color: green"><strong>Status: Delivered</strong></p>
+{% else %}
+    <p style="color: red"><strong>Status: Cancelled</strong></p>
+{% endif %}

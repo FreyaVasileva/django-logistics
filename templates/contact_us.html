@@ -2,7 +2,7 @@
 {% block site_content %}
     {% load bootstrap4 %}
 
-    <div class="bg-img" style="background-image: url('/static/contact_us_img.png')">
+    <div class="bg-img" style="background-image: url('/static/contact_us.png')">
         <form method="POST" action="{% url "contact" %}" enctype="multipart/form-data" class="contact-form" id="ContactForm">
             {% csrf_token %}
             {% for field in form %}

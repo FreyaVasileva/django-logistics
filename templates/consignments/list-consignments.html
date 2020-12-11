@@ -1,0 +1,24 @@
+{% extends 'shared/site.html' %}
+{% block site_content %}
+    <h2 class="text-center">Consignments List:</h2><br>
+    {% if is_worker %}
+        <button class="btn btn-outline-primary"><a href="{% url 'create consignment' %}">Create consignment</a></button><br><br>
+    {% endif %}
+    <div class="row">
+        {% for consignment in consignments %}
+            <div class="col-lg-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Tracking number: {{ consignment.tracking_number }}</h5>
+                        <p class="card-text">Delivery date: {{ consignment.delivery_date }}</p>
+                        {% include 'consignments/status-consignment.html' %}
+                        {% if is_worker %}
+                            <button class="btn btn-outline-secondary btn-sm"><a href="{% url 'consignment details' consignment.id %}">Details</a></button><br><br>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

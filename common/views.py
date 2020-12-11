@@ -5,17 +5,24 @@ from common.forms import ContactForm
 
 
 def landing_page(req):
-    return render(req, 'landing_page.html')
+    context = {
+        'is_worker': req.user.groups.filter(name='worker').exists(),
+    }
+    return render(req, 'landing_page.html', context)
 
 
 def about_us_page(req):
-    return render(req, 'about_us.html')
+    context = {
+        'is_worker': req.user.groups.filter(name='worker').exists(),
+    }
+    return render(req, 'about_us.html', context)
 
 
 def contact_us_page(req):
     if req.method == 'GET':
         context = {
             'form': ContactForm(),
+            'is_worker': req.user.groups.filter(name='worker').exists(),
         }
         return render(req, 'contact_us.html', context)
     else:
@@ -26,5 +33,6 @@ def contact_us_page(req):
         else:
             context = {
                 'form': form,
+                'is_worker': req.user.groups.filter(name='worker').exists(),
             }
             return render(req, 'contact_us.html', context)
