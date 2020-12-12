@@ -1,0 +1,28 @@
+{% extends 'shared/site.html' %}
+{% block site_content %}
+
+<div class="consignments-page-color">
+<h3 style="padding-top: 20px; text-align: center; margin: 20px 30px">Pending consignments</h3>
+<div class="grid">
+    {% for consignment in pending %}
+        <div class="grid-item">
+            <div class="card">
+                <div class="card-content">
+                    <h1 class="card-header">Consingment</h1>
+
+                    <h5 class="card-title">Tracking number: {{ consignment.tracking_number }}</h5>
+                    <p class="card-text">Delivery date: {{ consignment.delivery_date }}</p>
+                    {% include 'consignments/status-consignment.html' %}
+                    {% if is_worker %}
+                        <button class="btn btn-outline-secondary btn-sm"><a
+                                href="{% url 'consignment details' consignment.id %}">Details</a></button><br><br>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+</div>
+{% endblock %}
+

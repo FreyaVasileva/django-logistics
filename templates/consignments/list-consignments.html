@@ -1,24 +1,45 @@
 {% extends 'shared/site.html' %}
 {% block site_content %}
-    <h2 class="text-center">Consignments List:</h2><br>
-    {% if is_worker %}
-        <button class="btn btn-outline-primary"><a href="{% url 'create consignment' %}">Create consignment</a></button><br><br>
+
+    <h2 style="padding-top: 20px; text-align: center; margin: 20px 30px">Consignments List:</h2><br>
+
+
+    <div style="margin: 20px 30px; text-align: center;">
+     {% if is_worker %}
+        <button class="btn btn-outline-primary"><a href="{% url 'create consignment' %}">Create consignment</a></button>
+        <br><br>
     {% endif %}
-    <div class="row">
-        {% for consignment in consignments %}
-            <div class="col-lg-4">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Tracking number: {{ consignment.tracking_number }}</h5>
-                        <p class="card-text">Delivery date: {{ consignment.delivery_date }}</p>
-                        {% include 'consignments/status-consignment.html' %}
-                        {% if is_worker %}
-                            <button class="btn btn-outline-secondary btn-sm"><a href="{% url 'consignment details' consignment.id %}">Details</a></button><br><br>
-                        {% endif %}
+    </div>
+
+    <div class="grid">
+        <div class="grid-item">
+                <div class="card">
+                    <div class="card-content">
+                        <h1 class="card-header">Pending consignments</h1>
+                        <button class="btn btn-outline-secondary btn-sm">
+                            <a href="{% url 'pending consignments' %}">Sea all pending consignments</a></button>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+        </div>
+        <div class="grid-item">
+                <div class="card">
+                    <div class="card-content">
+                        <h1 class="card-header">Cancelled consignments</h1>
+                        <button class="btn btn-outline-secondary btn-sm">
+                            <a href="{% url 'cancelled consignments' %}">Sea all cancelled consignments</a></button>
+                    </div>
+                </div>
+        </div>
+        <div class="grid-item">
+                <div class="card">
+                    <div class="card-content">
+                        <h1 class="card-header">Delivered consignments</h1>
+                        <button class="btn btn-outline-secondary btn-sm">
+                            <a href="{% url 'delivered consignments' %}">Sea all delivered consignments</a></button>
+                    </div>
+                </div>
+        </div>
     </div>
 
 {% endblock %}
+

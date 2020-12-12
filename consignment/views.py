@@ -10,20 +10,26 @@ def is_worker(user):
     return user.groups.filter(name='worker').exists()
 
 
+def render_content(request, template, switcher_id):
+    user = request.user
+
+    if user.is_superuser or is_worker(user):
+        consignments = Consignment.objects.all()
+    else:
+        consignments = Consignment.objects.filter(receiver_id=user.id)
+
+    context = {'cancelled': set(consignments.filter(status='cancelled')),
+               'delivered': set(consignments.filter(status='delivered')),
+               'pending': set(consignments.filter(status='pending_delivery')),
+               'is_worker': is_worker(request.user),
+               }
+
+    return render(request, f'{template}.html', context)
+
+
 @login_required
 def consignments_list(request):
-    user = request.user
-    if user.is_superuser or is_worker(user):
-        context = {
-            'consignments': set(Consignment.objects.all()),
-            'is_worker': True,
-        }
-    else:
-        context = {
-            'consignments': set(Consignment.objects.filter(receiver_id=user.id)),
-            'is_worker': is_worker(request.user),
-        }
-    return render(request, 'consignments/list-consignments.html', context)
+    return render_content(request, 'consignments/list-consignments', 1)
 
 
 @login_required
@@ -102,3 +108,18 @@ def create_consignment(request):
         }
 
         return render(request, 'consignments/create_consignment.html', context)
+
+
+@login_required
+def cancelled_list(request):
+    return render_content(request, 'consignments/cancelled-consignments', 0)
+
+
+@login_required
+def pending_list(request):
+    return render_content(request, 'consignments/pending-consignments', 1)
+
+
+@login_required
+def delivered_list(request):
+    return render_content(request, 'consignments/delivered-consignments', 2)
