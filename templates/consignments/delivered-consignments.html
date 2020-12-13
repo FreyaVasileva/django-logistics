@@ -1,8 +1,9 @@
 {% extends 'shared/site.html' %}
 {% block site_content %}
 
-<h3 style="padding-top: 20px; text-align: center; margin: 20px 30px">Delivered consignments</h3>
+    <h3 style="padding-top: 20px; text-align: center; margin: 20px 30px">Delivered consignments</h3>
     <div class="grid">
+    {% if delivered %}
         {% for consignment in delivered %}
             <div class="grid-item">
                 <div class="card">
@@ -12,13 +13,16 @@
                         <p class="card-text">Delivery date: {{ consignment.delivery_date }}</p>
                         {% include 'consignments/status-consignment.html' %}
                         {% if is_worker %}
-                          <button class="btn btn-outline-secondary btn-sm"><a
-                                href="{% url 'consignment details' consignment.id %}">Details</a></button><br><br>
+                            <button class="btn btn-outline-secondary btn-sm"><a
+                                    href="{% url 'consignment details' consignment.id %}">Details</a></button><br><br>
                         {% endif %}
+                    </div>
                 </div>
             </div>
-         </div>
         {% endfor %}
+    {% else %}
+        <h3>There are not any delivered consignments no show.</h3>
+    {% endif %}
     <div>
 
 {% endblock %}

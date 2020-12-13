@@ -51,11 +51,13 @@ nav a:hover {
 }
 
 .grid {
+    padding-left: 100px;
+    padding-bottom: 40px;
   box-sizing: border-box;
   display: grid;
-  width: 100em;
-  grid-gap: 3rem;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  width: 63em;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 0fr));
   align-items: start;
 }
 
@@ -126,11 +128,8 @@ nav a:hover {
     padding: 1rem;
   }
 
-  .grid {
+    .grid {
     grid-gap: 1rem;
   }
 }
 
-.consignments-page-color{
-    background-color: #79aec8;
-}

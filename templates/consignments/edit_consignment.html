@@ -1,10 +1,18 @@
 {% extends 'shared/site.html' %}
 {% block site_content %}
+    <div style="width: 85%;max-width: 600px;background: #f1f1f1;position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);padding: 30px 40px;box-sizing: border-box;border-radius: 8px;text-align: center;box-shadow: 0 0 20px #000000b3;font-weight: 200;border:1px solid gray;margin: 8px 0;font-size: 18px;text-transform: uppercase;">
     <h3 class="text-center">Edit consignment</h3><br>
     <form method="post" action="{% url 'edit consignment' consignment.id %}" class="furniture-form"
           enctype="multipart/form-data">
-        {{ form }}
+        {% for field in form %}
+            {{ field.name }}:
+                {{ field }}
+            </br> </br>
+        {% endfor %}
         {% csrf_token %}
         <button class="btn btn-primary mt-2" type="submit">Edit</button>
     </form>
+
+    </div>
+
 {% endblock %}

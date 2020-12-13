@@ -1,12 +1,10 @@
 {% extends 'shared/site.html' %}
 {% block site_content %}
-    <div class="d-flex">
-        <div class="d-inline p-2 w-50">
+    <div  class="d-flex" style="width: 90%;margin: 20px 30px; max-width: 1000px; background: #f1f1f1;position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);padding: 30px 30px;box-sizing: border-box;border-radius: 8px;text-align: center;box-shadow: 0 0 20px #000000b3;font-weight: 200;border:1px solid gray;margin: 8px 0;font-size: 18px;text-transform: uppercase;">
             <h5><u>Tracking number:</u> {{ consignment.tracking_number }}</h5>
             <h5><u>Delivery date:</u> {{ consignment.delivery_date }}</h5>
             <h5><u>Receiver:</u> {{ consignment.receiver }}</h5>
             <h5>{% include 'consignments/status-consignment.html' %}</h5>
-
             <div class="btn-group">
                 <button class="btn btn-outline-secondary btn-sm"><a href="{% url 'edit consignment' consignment.id %}">Edit</a>
                 </button>
@@ -15,6 +13,8 @@
                 </button>
                 <br><br>
             </div>
-        </div>
     </div>
+
 {% endblock %}
+
+

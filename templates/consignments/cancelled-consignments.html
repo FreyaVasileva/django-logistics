@@ -3,6 +3,7 @@
 
 <h3 style="padding-top: 20px; text-align: center; margin: 20px 30px">Cancelled consignments</h3>
     <div class="grid">
+    {% if cancelled %}
         {% for consignment in cancelled %}
             <div class="grid-item">
                 <div class="card">
@@ -19,6 +20,9 @@
                 </div>
             </div>
         {% endfor %}
+    {% else %}
+        <h3>There are not any cancelled consignments no show.</h3>
+    {% endif %}
     </div>
 
 {% endblock %}

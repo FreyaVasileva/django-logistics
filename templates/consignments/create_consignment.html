@@ -21,4 +21,14 @@
         </div>
         <input type="submit" value="Create" class="btn btn-primary mt-3">
     </form>
+    {% if form.errors %}
+<div class="alert alert-danger alert-dismissible col-12 mx-1" role="alert">
+    <div id="form_errors">
+    {% for key, value in form.errors.items %}
+        <span class="fieldWrapper">
+            {{ key }}:{{ value }}
+        </span>
+    {% endfor %}
+</div>
+{% endif %}
 {% endblock %}
