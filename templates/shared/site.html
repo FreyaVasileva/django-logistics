@@ -20,7 +20,7 @@
         <a style="float: right;" href="{% url 'signout user' %}">Sign Out</a>
         <a style="float: right;" href="{% url 'user profile' %}">User: {{ user.username }}</a>
         <a style="float: right;" href="{% url 'list consignments' %}">Consignments</a>
-        {% if is_worker %}
+        {% if user.is_superuser %}
             <a style="float: right;" href="{% url 'add worker' %}">Sign Up Worker</a>
         {% endif %}
     {% else %}
